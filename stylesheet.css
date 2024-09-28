@@ -1,0 +1,25 @@
+header{
+    background-color: rgb(34, 142, 179);
+    text-decoration: none;
+    color: black;padding: 5px;
+    border: 2px;
+    div{
+        border-radius: 5px;
+        border: 10px;
+    }
+   
+    ul{
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+        
+       
+    }
+    li{
+        padding: 10px;
+    }
+
+}
+
+
+

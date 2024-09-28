@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Application System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f0ff; 
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .form {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .message {
+            text-align: center;
+            margin: 0 20px;
+            max-width: 400px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0a74da; 
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #0a74da;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #f1f9ff; 
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0a74da; 
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #005bb5; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <h2>Deposit Form</h2>
+            <form id="depositForm">
+                <label for="accnum">Account Number</label>
+                <input type="text" id="accnum" name="accNum" required>
+
+                <label for="depamt">Deposit Amount</label>
+                <input type="number" id="depamt" name="depamt" required>
+
+                <label for="deptyp">Deposit Type</label>
+                <select id="deptyp" name="deptyp" required>
+                    <option value="">Select Deposit Type</option>
+                    <option value="Savings">Savings</option>
+                    <option value="Current">Current</option>
+                    <option value="Fixed Deposit">Fixed Deposit</option>
+                </select>
+
+                <label for="confirm">Confirm Your Transaction</label>
+                <input type="checkbox" id="confirm" name="confirm" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="message">
+            <h2>Welcome to Our Bank</h2>
+            <p>
+                We offer a range of services to meet your financial needs. Use the <strong>Deposit Form</strong> on the left to securely deposit funds into your account. On the right, the <strong>Loan Application Form</strong> lets you apply for various types of loans, tailored to your needs. Our secure and user-friendly process ensures your transactions are handled with the utmost care and efficiency.
+            </p>
+        </div>
+
+        <div class="form">
+            <h2>Loan Application Form</h2>
+            <form id="loanForm">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mobile">Mobile Number</label><p id="error" style="color: red;"></p>
+                <input type="tel" id="mobile" name="mobile" required>
+
+                <label for="loanamt">Loan Amount</label>
+                <input type="number" id="loanamt" name="loanamt" required>
+
+                <label for="loanTyp">Loan Type</label>
+                <select id="loanTyp" name="loanTyp" required>
+                    <option value="" disabled selected>Select Loan Type</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Home">Home</option>
+                    <option value="Car">Car</option>
+                </select>
+
+                <label for="IncomeSource">Employment Status</label>
+                <select id="IncomeSource" name="IncomeSource" required>
+                    <option value="" disabled selected>Select Income Source</option>
+                    <option value="Employed">Employed</option>
+                    <option value="Self-Employed">Self-Employed</option>
+                    <option value="Student">Student</option>
+                </select>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('depositForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const accountNumber = document.getElementById('accnum').value.trim();
+            const depositAmount = document.getElementById('depamt').value;
+            const depositType = document.getElementById('deptyp').value; 
+            if (!/^\d+$/.test(accountNumber)) {
+                alert('Account Number must contain only numbers.');
+                return;
+            }
+
+            if (!accountNumber || depositAmount <= 0 || !depositType) {
+                alert('Please fill in all fields correctly.');
+                return;
+            }
+
+            alert('Deposit submitted successfully!');
+        });
+
+        document.getElementById('loanForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+            const loanAmount = document.getElementById('loanamt').value;
+            const loanType = document.getElementById('loanTyp').value;
+            const employmentStatus = document.getElementById('IncomeSource').value;
+            if (!/^\d{10}$/.test(mobile)) {
+               
+                document.getElementById("error").innerHTML="*bubu is wrong";
+                return;
+            }
+
+            if (!name || !email || !mobile || loanAmount <= 0 || !loanType || !employmentStatus) {
+                alert('Please fill in all fields correctly.');
+                return;
+            }
+
+            alert('Loan application submitted successfully!');
+        });
+    </script>
+</body>
+</html>

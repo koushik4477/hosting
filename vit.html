@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Layout</title>
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.grid {
+    display: grid;
+    gap: 10px;
+}
+
+.grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+}
+
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (min-width: 601px) and (max-width: 1000px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media (min-width: 1001px) {
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <img src="download.jpeg" alt="Image 1">
+        <img src="download1.jpeg" alt="Image 2">
+        <img src="download2.jpeg" alt="Image 3">
+        <img src="download7.jpeg" alt="Image 4">
+        <img src="lion.jpg" alt="Image 5">
+        <img src="orange.jpeg" alt="Image 6">
+    </div>
+</body>
+</html>
